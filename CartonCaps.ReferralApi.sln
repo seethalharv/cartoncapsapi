@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36212.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartonCaps.ReferralApi", "CartonCaps.ReferralApi\CartonCaps.ReferralApi.csproj", "{2614EB1D-057A-4DCC-B071-38B84FFB9043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartonCaps.ReferralApi.Tests", "CartonCaps.ReferralApi.Tests\CartonCaps.ReferralApi.Tests.csproj", "{30269C7C-12A1-48FE-AF97-9264E9EA76D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReadMe", "ReadMe", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Desktop\README.md = ..\..\..\Desktop\README.md
+		..\..\..\Desktop\referral_api_spec.md = ..\..\..\Desktop\referral_api_spec.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagrams", "Diagrams", "{CFA5929E-C450-4AD6-8A02-B4763A4C42B9}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Downloads\DB_Schema.drawio.png = ..\..\..\Downloads\DB_Schema.drawio.png
+		..\..\..\Downloads\Referal_Flow.drawio.png = ..\..\..\Downloads\Referal_Flow.drawio.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2614EB1D-057A-4DCC-B071-38B84FFB9043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2614EB1D-057A-4DCC-B071-38B84FFB9043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2614EB1D-057A-4DCC-B071-38B84FFB9043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2614EB1D-057A-4DCC-B071-38B84FFB9043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30269C7C-12A1-48FE-AF97-9264E9EA76D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30269C7C-12A1-48FE-AF97-9264E9EA76D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30269C7C-12A1-48FE-AF97-9264E9EA76D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30269C7C-12A1-48FE-AF97-9264E9EA76D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CFA5929E-C450-4AD6-8A02-B4763A4C42B9} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45E8B584-0052-4A8C-8BB6-C6B12DD51926}
+	EndGlobalSection
+EndGlobal

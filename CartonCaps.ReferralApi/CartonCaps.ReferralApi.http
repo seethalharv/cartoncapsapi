@@ -1,0 +1,6 @@
+@CartonCaps.ReferralApi_HostAddress = http://localhost:5194
+
+GET {{CartonCaps.ReferralApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

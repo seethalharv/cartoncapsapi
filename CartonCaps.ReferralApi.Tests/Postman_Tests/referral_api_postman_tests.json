@@ -1,0 +1,205 @@
+{
+  "info": {
+    "_postman_id": "4e65b480-d08e-43f1-a4a2-8c515fcb5e03",
+    "name": "CartonCaps Referral API Tests",
+    "schema": "httpss://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+
+      "name": "Get Referrals - Valid User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "httpss://localhost:7185/api/referrals/referalslist?userId=100",
+          "protocol": "https",
+          "host": [ "localhost" ],
+          "port": "7185",
+          "path": [ "api", "referrals", "referalslist" ],
+          "query": [
+            {
+              "key": "userId",
+              "value": "100"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"Response is an array\", function () {",
+              "    const json = pm.response.json();",
+              "    pm.expect(json).to.be.an('array');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Referrals - Invalid User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "httpss://localhost:7185/api/referrals/referalslist?userId=0",
+          "protocol": "https",
+          "host": ["localhost"],
+          "port": "7185",
+          "path": ["api", "referrals", "referalslist"],
+          "query": [
+            {
+              "key": "userId",
+              "value": "0"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "pm.test(\"Message includes 'Invalid userId'\", function () {",
+              "    pm.expect(pm.response.text()).to.include('Invalid userId');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invite Friend - Success",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"referrerUserId\": 100,\n  \"emailOrPhone\": \"abc@xyz.com\",\n  \"channel\": \"email\"\n}"
+        },
+        "url": {
+          "raw": "httpss://localhost:7185/api/referrals/invite",
+          "protocol": "https",
+          "host": ["localhost"],
+          "port": "7185",
+          "path": ["api", "referrals", "invite"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"Contains success message\", function () {",
+              "    const json = pm.response.json();",
+              "    pm.expect(json.status).to.include(\"invitation to\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invite Friend - Missing Fields",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}"
+        },
+        "url": {
+          "raw": "httpss://localhost:7185/api/referrals/invite",
+          "protocol": "https",
+          "host": [ "localhost" ],
+          "port": "7185",
+          "path": [ "api", "referrals", "invite" ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Referral Link - Valid User",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7185/api/referrals/get-referral-link?userId=100&channel=email",
+          "protocol": "https",
+          "host": [ "localhost" ],
+          "port": "7185",
+          "path": [ "api", "referrals", "get-referral-link" ],
+          "query": [
+            {
+              "key": "userId",
+              "value": "100"
+            },
+            {
+              "key": "channel",
+              "value": "email"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"Response contains referralLink\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property(\"referralLink\");",
+              "    pm.expect(jsonData.referralLink).to.be.a(\"string\").and.not.empty;",
+              "});",
+              "pm.test(\"Referral link looks like a URL\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.referralLink).to.match(/^https?:\\/\\/.+/);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ]
+}
